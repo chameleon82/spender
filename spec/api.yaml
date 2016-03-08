@@ -1,0 +1,135 @@
+swagger: '2.0'
+info:
+  title: Spender
+  description: Домашний бюджет
+  version: 0.1.1
+host: localhost:8080
+schemes:
+  - http
+  - https
+basePath: /spender
+produces:
+  - application/json
+  
+# Routes  
+paths:
+  /budget/items:
+    get:
+      operationId: getBudgetItems
+      summary: Список статей бюджета по умолчанию
+      responses:
+        200:
+          description: Статьи бюджета
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Item'
+    
+  /{userId}:
+    get:
+      operationId: getUserAccountInfo
+      summary: Информация об аккаунте пользователя
+      parameters: 
+        - name: userId
+          in: path
+          description: Идентификатор пользователя
+          required: true
+          type: string
+      tags: 
+       - Пользователь
+      responses:
+        200:
+          description: Состояние аккаунта
+          schema:
+            $ref: '#/definitions/AccountInfo'
+      security:
+        - api_key: []
+  /{userId}/gain:
+    parameters:
+      - name: userId
+        in: path
+        description: Идентификатор пользователя
+        required: true
+        type: string
+    get:
+      operationId: getGains
+      summary: Информация о доходах пользователя
+      tags:
+        - Пользователь
+      responses:
+        200:
+          description: Доходы пользователя
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Gain'
+      security:
+        - api_key:  []  
+    post:
+      operationId: addGain
+      summary: Добавить запись о доходе 
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Gain'
+      responses:
+        201:
+          description: Запись успешно добавлена
+        default:
+          description: Неопределенная ошибка
+          schema:
+            $ref: '#/definitions/Error'
+      security:
+        - api_key:  []  
+          
+
+# Security
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+
+# Models            
+definitions:
+  AccountInfo:
+    description: Сводная информация об аккаунте
+    properties:
+      balance:
+        type: integer
+        
+  Item:
+    description: Статья бюджета
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        
+  Gain:
+    description: Статья дохода
+    properties:
+      id:
+        type: integer
+        description: Идентификатор статьи дохода
+      amount:
+        type: integer
+        description: Сумма
+      item:
+        type: integer
+        description: Статья дохода
+      name:
+        type: string
+        description: Описание дохода
+        
+  Error:
+    description: Неопределенная ошибка
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

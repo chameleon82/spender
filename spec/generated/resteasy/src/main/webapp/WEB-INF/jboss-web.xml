@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>/spender</context-root>
+</jboss-web>

@@ -1,0 +1,181 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Домашний бюджет",
+    "version" : "0.1.1",
+    "title" : "Spender"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/spender",
+  "schemes" : [ "http", "https" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/budget/items" : {
+      "get" : {
+        "summary" : "Список статей бюджета по умолчанию",
+        "operationId" : "getBudgetItems",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Статьи бюджета",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Item"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{userId}" : {
+      "get" : {
+        "tags" : [ "Пользователь" ],
+        "summary" : "Информация об аккаунте пользователя",
+        "operationId" : "getUserAccountInfo",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "Идентификатор пользователя",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Состояние аккаунта",
+            "schema" : {
+              "$ref" : "#/definitions/AccountInfo"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/{userId}/gain" : {
+      "get" : {
+        "tags" : [ "Пользователь" ],
+        "summary" : "Информация о доходах пользователя",
+        "operationId" : "getGains",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "Идентификатор пользователя",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Доходы пользователя",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Gain"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Добавить запись о доходе",
+        "operationId" : "addGain",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "Идентификатор пользователя",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Gain"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Запись успешно добавлена"
+          },
+          "default" : {
+            "description" : "Неопределенная ошибка",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "AccountInfo" : {
+      "properties" : {
+        "balance" : {
+          "type" : "integer"
+        }
+      },
+      "description" : "Сводная информация об аккаунте"
+    },
+    "Item" : {
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Статья бюджета"
+    },
+    "Gain" : {
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "description" : "Идентификатор статьи дохода"
+        },
+        "amount" : {
+          "type" : "integer",
+          "description" : "Сумма"
+        },
+        "item" : {
+          "type" : "integer",
+          "description" : "Статья дохода"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Описание дохода"
+        }
+      },
+      "description" : "Статья дохода"
+    },
+    "Error" : {
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "fields" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Неопределенная ошибка"
+    }
+  }
+}

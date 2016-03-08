@@ -1,0 +1,3 @@
+chcp 1251
+java -Dfile.encoding=utf-8 -jar ..\..\spec\swagger-codegen\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar generate -i ..\..\spec\api.yaml -l swagger -o ..\..\spec\generated
+java -Dfile.encoding=windows-1251 -jar ..\..\spec\swagger-codegen\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar generate -i ..\..\spec\generated\swagger.json -l jaxrs-resteasy  -c swagger-config.json

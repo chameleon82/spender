@@ -1,0 +1,6 @@
+{
+  "apiPackage":"com.spender.server",
+  "modelPackage":"com.spender.server.models",  
+  "groupId":"com.spender",
+  "artifactId":"SpenderServer"
+}
