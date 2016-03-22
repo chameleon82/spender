@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Домашний бюджет",
+    "description" : "Р”РѕРјР°С€РЅРёР№ Р±СЋРґР¶РµС‚",
     "version" : "0.1.1",
     "title" : "Spender"
   },
@@ -12,12 +12,12 @@
   "paths" : {
     "/budget/items" : {
       "get" : {
-        "summary" : "Список статей бюджета по умолчанию",
+        "summary" : "РЎРїРёСЃРѕРє СЃС‚Р°С‚РµР№ Р±СЋРґР¶РµС‚Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ",
         "operationId" : "getBudgetItems",
         "parameters" : [ ],
         "responses" : {
           "200" : {
-            "description" : "Статьи бюджета",
+            "description" : "РЎС‚Р°С‚СЊРё Р±СЋРґР¶РµС‚Р°",
             "schema" : {
               "type" : "array",
               "items" : {
@@ -30,19 +30,19 @@
     },
     "/{userId}" : {
       "get" : {
-        "tags" : [ "Пользователь" ],
-        "summary" : "Информация об аккаунте пользователя",
+        "tags" : [ "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ" ],
+        "summary" : "РРЅС„РѕСЂРјР°С†РёСЏ РѕР± Р°РєРєР°СѓРЅС‚Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
         "operationId" : "getUserAccountInfo",
         "parameters" : [ {
           "name" : "userId",
           "in" : "path",
-          "description" : "Идентификатор пользователя",
+          "description" : "РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
           "required" : true,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Состояние аккаунта",
+            "description" : "РЎРѕСЃС‚РѕСЏРЅРёРµ Р°РєРєР°СѓРЅС‚Р°",
             "schema" : {
               "$ref" : "#/definitions/AccountInfo"
             }
@@ -55,19 +55,19 @@
     },
     "/{userId}/gain" : {
       "get" : {
-        "tags" : [ "Пользователь" ],
-        "summary" : "Информация о доходах пользователя",
+        "tags" : [ "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ" ],
+        "summary" : "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕС…РѕРґР°С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
         "operationId" : "getGains",
         "parameters" : [ {
           "name" : "userId",
           "in" : "path",
-          "description" : "Идентификатор пользователя",
+          "description" : "РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
           "required" : true,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Доходы пользователя",
+            "description" : "Р”РѕС…РѕРґС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
             "schema" : {
               "type" : "array",
               "items" : {
@@ -81,12 +81,12 @@
         } ]
       },
       "post" : {
-        "summary" : "Добавить запись о доходе",
+        "summary" : "Р”РѕР±Р°РІРёС‚СЊ Р·Р°РїРёСЃСЊ Рѕ РґРѕС…РѕРґРµ",
         "operationId" : "addGain",
         "parameters" : [ {
           "name" : "userId",
           "in" : "path",
-          "description" : "Идентификатор пользователя",
+          "description" : "РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
           "required" : true,
           "type" : "string"
         }, {
@@ -99,10 +99,10 @@
         } ],
         "responses" : {
           "201" : {
-            "description" : "Запись успешно добавлена"
+            "description" : "Р—Р°РїРёСЃСЊ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР°"
           },
           "default" : {
-            "description" : "Неопределенная ошибка",
+            "description" : "РќРµРѕРїСЂРµРґРµР»РµРЅРЅР°СЏ РѕС€РёР±РєР°",
             "schema" : {
               "$ref" : "#/definitions/Error"
             }
@@ -128,7 +128,7 @@
           "type" : "integer"
         }
       },
-      "description" : "Сводная информация об аккаунте"
+      "description" : "РЎРІРѕРґРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± Р°РєРєР°СѓРЅС‚Рµ"
     },
     "Item" : {
       "properties" : {
@@ -139,28 +139,28 @@
           "type" : "string"
         }
       },
-      "description" : "Статья бюджета"
+      "description" : "РЎС‚Р°С‚СЊСЏ Р±СЋРґР¶РµС‚Р°"
     },
     "Gain" : {
       "properties" : {
         "id" : {
           "type" : "integer",
-          "description" : "Идентификатор статьи дохода"
+          "description" : "РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё РґРѕС…РѕРґР°"
         },
         "amount" : {
           "type" : "integer",
-          "description" : "Сумма"
+          "description" : "РЎСѓРјРјР°"
         },
         "item" : {
           "type" : "integer",
-          "description" : "Статья дохода"
+          "description" : "РЎС‚Р°С‚СЊСЏ РґРѕС…РѕРґР°"
         },
         "name" : {
           "type" : "string",
-          "description" : "Описание дохода"
+          "description" : "РћРїРёСЃР°РЅРёРµ РґРѕС…РѕРґР°"
         }
       },
-      "description" : "Статья дохода"
+      "description" : "РЎС‚Р°С‚СЊСЏ РґРѕС…РѕРґР°"
     },
     "Error" : {
       "properties" : {
@@ -175,7 +175,7 @@
           "type" : "string"
         }
       },
-      "description" : "Неопределенная ошибка"
+      "description" : "РќРµРѕРїСЂРµРґРµР»РµРЅРЅР°СЏ РѕС€РёР±РєР°"
     }
   }
 }

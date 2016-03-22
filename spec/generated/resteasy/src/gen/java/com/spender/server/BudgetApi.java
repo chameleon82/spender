@@ -20,7 +20,7 @@ import javax.ws.rs.*;
 @Path("/budget")
 
 @Produces({ "application/json" })
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2016-03-08T16:56:01.221+07:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2016-03-22T08:52:26.866+07:00")
 
 public class BudgetApi  {
    private final BudgetApiService delegate = BudgetApiServiceFactory.getBudgetApi();

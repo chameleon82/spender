@@ -179,10 +179,11 @@ font-style: italic;
   text-decoration: none;
 }
     </style>
+	<meta charset="utf-8" />
   </head>
   <body>
   <h1>Spender</h1>
-    <div class="app-desc">�������� ������</div>
+    <div class="app-desc">Домашний бюджет</div>
     <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
     <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
     <div class="app-desc">Version: 0.1.1</div>
@@ -202,17 +203,17 @@ font-style: italic;
   
   
   
-  <li><a href="#getUserAccountInfo"><code><span class="http-method">get</span> /{userId}</code></a></li>
-  
   <li><a href="#getGains"><code><span class="http-method">get</span> /{userId}/gain</code></a></li>
   
+  <li><a href="#getUserAccountInfo"><code><span class="http-method">get</span> /{userId}</code></a></li>
   
   
   
   
-  <li><a href="#getBudgetItems"><code><span class="http-method">get</span> /budget/items</code></a></li>
   
   <li><a href="#addGain"><code><span class="http-method">post</span> /{userId}/gain</code></a></li>
+  
+  <li><a href="#getBudgetItems"><code><span class="http-method">get</span> /budget/items</code></a></li>
   
   
   
@@ -223,70 +224,11 @@ font-style: italic;
   
   
   
-  <div class="method"><a name="getUserAccountInfo"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /{userId}</code></pre></div>
-    <div class="method-summary">���������� �� �������� ������������ (<span class="nickname">getUserAccountInfo</span>)</div>
-    
-    <div class="method-notes"></div>
-
-    
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">userId (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ������������� ������������ </div>
-    </div>  <!-- field-items -->
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#AccountInfo">AccountInfo</a>
-      
-    </div>
-    
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    
-
-    
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
-    <ul>
-    
-      <li><code>application/json</code></li>
-    
-    </ul>
-    
-
-    <h3 class="field-label">Responses</h3>
-    
-    <h4 class="field-label">200</h4>
-    ��������� ��������
-    
-    
-  </div> <!-- method -->
-  <hr/>
-  
   <div class="method"><a name="getGains"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /{userId}/gain</code></pre></div>
-    <div class="method-summary">���������� � ������� ������������ (<span class="nickname">getGains</span>)</div>
+    <div class="method-summary">Информация о доходах пользователя (<span class="nickname">getGains</span>)</div>
     
     <div class="method-notes"></div>
 
@@ -295,7 +237,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">userId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ������������� ������������ </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Идентификатор пользователя </div>
     </div>  <!-- field-items -->
     
 
@@ -335,7 +277,66 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     
     <h4 class="field-label">200</h4>
-    ������ ������������
+    Доходы пользователя
+    
+    
+  </div> <!-- method -->
+  <hr/>
+  
+  <div class="method"><a name="getUserAccountInfo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{userId}</code></pre></div>
+    <div class="method-summary">Информация об аккаунте пользователя (<span class="nickname">getUserAccountInfo</span>)</div>
+    
+    <div class="method-notes"></div>
+
+    
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">userId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Идентификатор пользователя </div>
+    </div>  <!-- field-items -->
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#AccountInfo">AccountInfo</a>
+      
+    </div>
+    
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    
+
+    
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+    
+      <li><code>application/json</code></li>
+    
+    </ul>
+    
+
+    <h3 class="field-label">Responses</h3>
+    
+    <h4 class="field-label">200</h4>
+    Состояние аккаунта
     
     
   </div> <!-- method -->
@@ -345,11 +346,75 @@ font-style: italic;
   
   
   
+  <div class="method"><a name="addGain"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /{userId}/gain</code></pre></div>
+    <div class="method-summary">Добавить запись о доходе (<span class="nickname">addGain</span>)</div>
+    
+    <div class="method-notes"></div>
+
+    
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">userId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Идентификатор пользователя </div>
+    </div>  <!-- field-items -->
+    
+
+    
+
+    
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+    </div>  <!-- field-items -->
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    
+
+    
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+    
+      <li><code>application/json</code></li>
+    
+    </ul>
+    
+
+    <h3 class="field-label">Responses</h3>
+    
+    <h4 class="field-label">201</h4>
+    Запись успешно добавлена
+    
+    
+    <h4 class="field-label">0</h4>
+    Неопределенная ошибка
+    
+    
+  </div> <!-- method -->
+  <hr/>
+  
   <div class="method"><a name="getBudgetItems"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /budget/items</code></pre></div>
-    <div class="method-summary">������ ������ ������� �� ��������� (<span class="nickname">getBudgetItems</span>)</div>
+    <div class="method-summary">Список статей бюджета по умолчанию (<span class="nickname">getBudgetItems</span>)</div>
     
     <div class="method-notes"></div>
 
@@ -391,71 +456,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     
     <h4 class="field-label">200</h4>
-    ������ �������
-    
-    
-  </div> <!-- method -->
-  <hr/>
-  
-  <div class="method"><a name="addGain"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /{userId}/gain</code></pre></div>
-    <div class="method-summary">�������� ������ � ������ (<span class="nickname">addGain</span>)</div>
-    
-    <div class="method-notes"></div>
-
-    
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">userId (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ������������� ������������ </div>
-    </div>  <!-- field-items -->
-    
-
-    
-
-    
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
-    </div>  <!-- field-items -->
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    
-
-    
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
-    <ul>
-    
-      <li><code>application/json</code></li>
-    
-    </ul>
-    
-
-    <h3 class="field-label">Responses</h3>
-    
-    <h4 class="field-label">201</h4>
-    ������ ������� ���������
-    
-    
-    <h4 class="field-label">0</h4>
-    �������������� ������
+    Статьи бюджета
     
     
   </div> <!-- method -->
@@ -473,7 +474,7 @@ font-style: italic;
   <ol>
   
   
-    <li><a href="#Item"><code>Item</code></a></li>
+    <li><a href="#AccountInfo"><code>AccountInfo</code></a></li>
   
   
   
@@ -481,11 +482,11 @@ font-style: italic;
   
   
   
-    <li><a href="#AccountInfo"><code>AccountInfo</code></a></li>
-  
-  
-  
     <li><a href="#Gain"><code>Gain</code></a></li>
+  
+  
+  
+    <li><a href="#Item"><code>Item</code></a></li>
   
   
   </ol>
@@ -493,11 +494,9 @@ font-style: italic;
   
   
   <div class="model">
-    <h3 class="field-label"><a name="Item">Item</a> <a class="up" href="#__Models">Up</a></h3>
+    <h3 class="field-label"><a name="AccountInfo">AccountInfo</a> <a class="up" href="#__Models">Up</a></h3>
     <div class="field-items">
-      <div class="param">id </div><div class="param-desc"><span class="param-type">Integer</span> </div>
-      
-      <div class="param">name </div><div class="param-desc"><span class="param-type">String</span> </div>
+      <div class="param">balance </div><div class="param-desc"><span class="param-type">Integer</span> </div>
       
       
     </div>  <!-- field-items -->
@@ -521,9 +520,15 @@ font-style: italic;
   
   
   <div class="model">
-    <h3 class="field-label"><a name="AccountInfo">AccountInfo</a> <a class="up" href="#__Models">Up</a></h3>
+    <h3 class="field-label"><a name="Gain">Gain</a> <a class="up" href="#__Models">Up</a></h3>
     <div class="field-items">
-      <div class="param">balance </div><div class="param-desc"><span class="param-type">Integer</span> </div>
+      <div class="param">id </div><div class="param-desc"><span class="param-type">Integer</span> Идентификатор статьи дохода</div>
+      
+      <div class="param">amount </div><div class="param-desc"><span class="param-type">Integer</span> Сумма</div>
+      
+      <div class="param">item </div><div class="param-desc"><span class="param-type">Integer</span> Статья дохода</div>
+      
+      <div class="param">name </div><div class="param-desc"><span class="param-type">String</span> Описание дохода</div>
       
       
     </div>  <!-- field-items -->
@@ -532,15 +537,11 @@ font-style: italic;
   
   
   <div class="model">
-    <h3 class="field-label"><a name="Gain">Gain</a> <a class="up" href="#__Models">Up</a></h3>
+    <h3 class="field-label"><a name="Item">Item</a> <a class="up" href="#__Models">Up</a></h3>
     <div class="field-items">
-      <div class="param">id </div><div class="param-desc"><span class="param-type">Integer</span> ������������� ������ ������</div>
+      <div class="param">id </div><div class="param-desc"><span class="param-type">Integer</span> </div>
       
-      <div class="param">amount </div><div class="param-desc"><span class="param-type">Integer</span> �����</div>
-      
-      <div class="param">item </div><div class="param-desc"><span class="param-type">Integer</span> ������ ������</div>
-      
-      <div class="param">name </div><div class="param-desc"><span class="param-type">String</span> �������� ������</div>
+      <div class="param">name </div><div class="param-desc"><span class="param-type">String</span> </div>
       
       
     </div>  <!-- field-items -->
